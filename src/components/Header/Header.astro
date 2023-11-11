@@ -1,0 +1,22 @@
+---
+import { type NavigationList } from "./types";
+const navigationList: NavigationList[] = [
+  { href: "/", name: "Home" },
+  { href: "/blog", name: "Blog" },
+  { href: "/hobby", name: "Hobby" },
+];
+---
+
+<header>
+  <nav>
+    <ul>
+      {
+        navigationList.map(({ href, name }) => (
+          <li>
+            <a href={href}>{name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

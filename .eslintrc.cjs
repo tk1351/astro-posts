@@ -1,10 +1,16 @@
 module.exports = {
-  // ...
+  env: {
+    browser: true
+  },
+  parserOptions: {
+    sourceType: "module",
+    ecmaVersion: 'latest',
+    project: './tsconfig.json'
+  },
   extends: [
-    // ...
+    "eslint:recommended",
     "plugin:astro/recommended",
   ],
-  // ...
   overrides: [
     {
       // Define the configuration for `.astro` file.
@@ -22,6 +28,9 @@ module.exports = {
         // "astro/no-set-html-directive": "error"
       },
     },
-    // ...
+    {
+      files: ['*.ts'],
+      parser: '@typescript-eslint/parser',
+    },
   ],
 };

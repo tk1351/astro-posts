@@ -13,7 +13,9 @@ const navigationList: NavigationList[] = [
       {
         navigationList.map(({ href, name }) => (
           <li>
-            <a href={href}>{name}</a>
+            <a href={href} data-astro-prefetch>
+              {name}
+            </a>
           </li>
         ))
       }

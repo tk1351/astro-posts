@@ -12,7 +12,9 @@ const posts = await getCollection("hobby");
       posts.map((post) => (
         <li>
           <article>
-            <a href={`/hobby/${post.slug}`}>{post.data.title}</a>
+            <a href={`/hobby/${post.slug}`} data-astro-prefetch>
+              {post.data.title}
+            </a>
             <time datetime={post.data.pubDate.toLocaleString()}>
               {post.data.pubDate.toLocaleString("ja-JP", {
                 year: "numeric",

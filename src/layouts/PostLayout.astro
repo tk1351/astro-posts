@@ -1,0 +1,58 @@
+---
+import { type CollectionEntry } from "astro:content";
+interface Props {
+  post: CollectionEntry<"tech" | "hobby">;
+}
+
+const { post } = Astro.props;
+---
+
+<article>
+  <h1>{post.data.title}</h1>
+  <time datetime={post.data.pubDate.toLocaleString()}
+    >{
+      post.data.pubDate.toLocaleString("ja-JP", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      })
+    }</time
+  >
+  <ul>{post.data.tags.map((tag) => <li>{tag}</li>)}</ul>
+  <slot />
+</article>
+
+<style>
+  h1 {
+    font-size: 32px;
+  }
+  time {
+    font-size: 14px;
+  }
+  ul {
+    display: flex;
+    gap: 4px;
+  }
+
+  article > :global(* + *) {
+    margin-block-start: 12px;
+  }
+
+  article :global(h2) {
+    font-size: 28px;
+  }
+
+  article :global(h3) {
+    font-size: 24px;
+  }
+
+  article :global(a) {
+    color: #bbbbcb;
+  }
+
+  article :global(pre) {
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 12px;
+  }
+</style>
